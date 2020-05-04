@@ -1,0 +1,2 @@
+# koronakoulu
+Peli etäkoulupäivästä
