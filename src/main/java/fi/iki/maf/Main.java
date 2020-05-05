@@ -22,8 +22,10 @@ public class Main
                     return 0;
                 }
                 int number = Integer.parseInt(s);
-                if (number >= 1 && number <= maxOption)
+                if (number >= 1 && number <= maxOption) {
+                    // Option selected
                     return number;
+                }
             }
             catch (Exception e) {
             }
@@ -65,7 +67,6 @@ public class Main
             if (s != null) System.out.println(s);
         });
 
-        System.out.println(score.getScore());
-        System.out.println(score.getResultText());
+        System.out.println("\n" + score.getScore() + " - " + score.getResultText() + "\n");
     }
 }

@@ -7,8 +7,9 @@ public class GameData {
 	static final public int FirstRound = 1;
 	static final public int LastRound = 12;
 
-	public static String getIntroduction(int index) {
-		switch (index) {
+	/* Introduction text for each game round */
+	public static String getIntroduction(int round) {
+		switch (round) {
 			case 1: return "Huomenta! Herätyskello soi! Kello on 8:15. Olet 10-vuotias neljäsluokkalainen koululainen.\n"
 				+ "Korona-epidemian takia koulut on suljettu ja koulua käydään etäopetuksena.\n"
 				+ "Koulu alkaa kello 9 ja tiedät että opettaja tulee silloin lähettämään sinulle\n"
@@ -37,6 +38,7 @@ public class GameData {
 		return "";
 	}
 
+	/* Available options for game rounds */
 	public static ArrayList<Option> getOptions() {
 		ArrayList<Option> options = new ArrayList<>();
 		// 0
@@ -96,7 +98,7 @@ public class GameData {
 		// 6
 		options.add(new Option(
 			1, 3,
-			"Tarkista jos mieli tubettaja on julkaissut mitään uutta Youtubessa.",
+			"Tarkista onko mielitubettajasi julkaissut mitään uutta Youtubessa.",
 			"Vartti vierähti Youtuben parissa. Youtube ehdottaa uutta vielä mielenkiintoisempaa videota.",
 			null,
 			null,
@@ -223,8 +225,8 @@ public class GameData {
 		options.add(new Option(
 			4, LastRound,
 			"Lue kirjaa.",
-			"Luit kirjan loppuun ja merkitsit sen lukudiplomiin.",
-			"Et saanut lukudiplomiin kirjamerkintää.",
+			"Luit kirjan loppuun ja merkitsit sen lukudiplomiin. Taas yksi kirja vähemmän jäljellä.",
+			"Et saanut lukudiplomiin kirjamerkintää. Joudut lukemaan myöhemmin vielä enemmän.",
 			"Sait lukudiplomiin yhden kirjan luettua.",
 			-10, +10, null
 		));
@@ -277,7 +279,7 @@ public class GameData {
 		options.add(new Option(
 			9, LastRound,
 			"Lue uusi Aku Ankka.",
-			"Luit uuden Aku Ankan. Oikeastaan aika kiva lehti.",
+			"Luit uuden Aku Ankan. Se oli oikeastaan aika kiva lehti.",
 			null,
 			"Luit uuden Aku Ankan.",
 			0, 0, null
@@ -297,7 +299,7 @@ public class GameData {
 			"Tee äidinkielen Ville-tehtävät timantille.",
 			"Teit äidinkielen Ville-tehtävät timantille. Sinusta tuntuu tosi hyvältä ja tunnet osaavasi pronominit ja numeraalit tosi hyvin.",
 			null,
-			"Teit äidinkielentehtävät timantille. Pärjäsit tosi hyvin äidinkielen kokeessa.",
+			"Teit äidinkielentehtävät timantille. Sen ansiosta pärjäsit tosi hyvin äidinkielen kokeessa.",
 			0, +10, options.get(27)
 		));
 		// 29
@@ -315,7 +317,7 @@ public class GameData {
 			"Lue toista kirjaa.",
 			"Aloitit uuden kirjan ja luit sitä jo hyvän matkaa.",
 			null,
-			"Sait luettua toista kirjaa lukudiplomia varten.",
+			"Sait luettua toista kirjaa lukudiplomia varten. Lukudiplomisi valmistuu tuota pikaa.",
 			0, +5, options.get(20)
 		));
 		// 31
@@ -323,7 +325,7 @@ public class GameData {
 			6, LastRound,
 			"Lähde kävelylle.",
 			"Kävit tekemässä pienen kävelylenkin ja piristyit.",
-			null,
+			"Unohdin ulkoilla. Toivottavasti liikut illalla.",
 			"Teit piristävän kävelylenkin ja pidit huolta kunnostasi.",
 			0, +10, null
 		));
@@ -336,18 +338,27 @@ public class GameData {
 			"Muistit syödä välipalan.",
 			-10, +10, null
 		));
+		// 33
+		options.add(new Option(
+			4, LastRound,
+			"Harjoittele ympäristöopin kokeeseen.",
+			"Harjoittelit ympäristöopin kokeeseen. Sinusta tuntuu että hallitset koealueen.",
+			"Ympäristöopin koe meni ihan penkin alle. Siinä kysyttiin tosi vaikeita kysymyksiä. Olisikohan lukeminen auttanut.",
+			"Ympäristöopin kokeesta tuli huippuarvosana. Koe tuntui tosi helpolta.",
+			-10, +10, null
+		));
 		return options;
 	}
 
+	/* Resulting score evaluation */
 	public static String getResult(int score) {
-		if (score >= 125) return "Aika hyvin";
-		if (score >= 115) return "Aika hyvin";
-		if (score >= 105) return "Aika hyvin";
-		if (score >= 95) return "Aika hyvin";
-		if (score >= 80) return "Aika hyvin";
-		if (score >= 50) return "Aika hyvin";
-		if (score >= 25) return "Aika hyvin";
+		if (score >= 110) return "Loistosuoritus!";
+		if (score >= 100) return "Hyvä koulupäivä!";
+		if (score >= 90) return "Ihan hyvin meni.";
+		if (score >= 75) return "Jotenkuten selvisit, mutta koulutyö ei etene.";
+		if (score >= 50) return "Aika laiska päivä. Todistusnumerot kärsii.";
+		if (score >= 25) return "Surkeaa. Koulupäivä sujui huonosti.";
 		if (score >= 0) return "Nyt meni päivä ihan mönkään. Koulupäivä ei sujunut ollenkaan.";
-		return "Nyt meni päivä ihan mönkään. Koulupäivä ei sujunut ollenkaan.";
+		return "Aivan kamalaa. Tällä menolla ei hyvää seuraa.";
 	}
 }
