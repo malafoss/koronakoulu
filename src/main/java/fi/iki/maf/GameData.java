@@ -261,9 +261,9 @@ public class GameData {
 		options.add(new Option(
 			11, 11,
 			"Pelaa Minea kaverin kanssa.",
-			"Pelasin Minecraftia kaverin kanssa. Olipa mukava peli. Kaveri ehdottaa että jatketaan pelaamista.",
+			"Pelasit Minecraftia kaverin kanssa. Olipa mukava peli. Kaveri ehdottaa että jatketaan pelaamista.",
 			"Kaveri pettyi kun ei päässyt pelaamaan kanssasi.",
-			"Pelasin Minecraftia kaverin kanssa.",
+			"Pelasit Minecraftia kaverin kanssa.",
 			-5, 0, null
 		));
 		// 25
